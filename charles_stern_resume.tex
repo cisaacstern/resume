@@ -132,7 +132,7 @@
             \item \texttt{pangeo-forge-runner} CLI: Apache Beam is flexible and powerful, but it's somewhat hard to deploy. This CLI, on which I am core developer, provides a unified interface for execution and storage configuration.
             \item Github Action integration: Developed and released a custom GitHub Action that allows users to deploy ETL pipelines to both test and production environments as part of CI/CD workflows.
             \item Upstream contributions: I currently lead development of the \texttt{DaskRunner} backend for Apache Beam, which encompasses multiple in-flight PRs on both Beam and Dask.
-            I also particate in community meetings related to Zarr V3 implementation in \texttt{zarr-python}, and have
+            I also participate in community meetings related to Zarr V3 implementation in \texttt{zarr-python}, and have
             prior PRs merged to \texttt{xarray}, Dask \texttt{distributed}, and \texttt{fsspec}.
           \end{itemize}
         \resumeItem{ETL Pipeline Development \& Deployment}
@@ -146,18 +146,36 @@
             \href{https://arxiv.org/abs/2306.08754}{(https://arxiv.org/abs/2306.08754)}.
             My contributions included designing and deploying a Pangeo Forge pipeline to extract 25 TB of high-res data
             from Hugging Face, and build it into a 25 TB Zarr store on GCS in a single GCP Dataflow batch job.
-            \item SWOT Intercomparison: 
-            \item AQUA-MODIS: 
-            \item Miscelaneous: NOAA OISST, etc etc
-            \item Cataloging: stac, Postgres data model, 
+            \item SWOT Inter-comparison: Built a 2TB catalog of Zarr ocean model data in consisting of
+            regional subsets of the GIGATL, HYCOM25, HYCOM50, eNATL60, FESOM, ORCA36, and FIO-COM32 models,
+            which formed the data basis for the following publication: \href{https://doi.org/10.5194/gmd-2022-27}{https://doi.org/10.5194/gmd-2022-27}.
+            The biggest challenge here was not data size but rather maintaining connections with the flaky academic FTP servers in Europe
+            that hosted the source data!
+            \item NASA PACE: Collaboration with scientists at UW's Applied Physics Lab.
+            Built a $\sim$800 GB Zarr store onto the NSF Open Storage Network from a subset of fields provided by the Aqua MODIS mission
+            as part of work to benchmark ML models being developed for analysis of forthcoming data from
+            NASA's PACE ocean color mission.
+            \item In addition to above large projects, I have also lead and/or collaborated on pipelines for a range of other datasets
+            including CESM POP, NOAA HRRR, NOAA OISST, NASA SMAP, NASA GPCP, and NASA GPM IMERG.
           \end{itemize}
-        \resumeItem{REST API Service Development}
-          {Developed a prototype}
+        \resumeItem{REST API Service Development \& Operation}
+          {Developed and operated a backend service for Pangeo Forge Cloud,
+          a managed ETL service, built with FastAPI and deployed to Heroku,
+          with additional components deployed to via Terraform to GCP.
+          Docs archived here: \href{https://github.com/pangeo-forge/pangeo-forge-orchestrator/blob/main/docs/README.md}
+          {https://github.com/pangeo-forge/pangeo-forge-orchestrator/blob/main/docs/README.md}
+          }
           \begin{itemize}
-            \item FastAPI
-            \item Infrastructure as Code (IaC)
-            \item GitHub Integration 
-            \item Heroku, Docker, GCP Cloud Functions, GCP Dataflow
+            \item FastAPI application with two roles: CRUD interface for Postgres
+            database storing application state and data catalog; and orchestration point for translating GitHub App
+            event payloads into deployed ETL jobs on GCP Dataflow. 
+            \item Docker: Customized a production Docker image using a multi-stage build to optimize for efficient deployment size.
+            \item Infrastructure as Code (IaC): Developed custom solution for automated GCP Dataflow job monitoring.
+            Deployed with Terraform, this solution included GCP Cloud Functions, Logging Sinks, and Pub/Sub topics,
+            and sent webhooks back to our core FastAPI application with notifications when jobs either succeeded or failed.
+            \item CI/CD: Deployment pipeline included review, staging, and production applications, each provisioned with its
+            own Postgres database and Terraform-deployed job monitoring instance. This allowed builds of the full stack to
+            be integration-tested at every phase of deployment, catalyzing rapid iterative development.
           \end{itemize}
 
       \resumeItemListEnd
