@@ -1,0 +1,215 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+% \usepackage[sfdefault]{roboto}
+\usepackage{helvet}
+% \usepackage{HelveticaNeue}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item[]\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-0.5pt}\item[]
+    \begin{tabular*}{0.999\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=1pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=12pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://cisaacstern.github.io/}{\Large Charles Stern}} & Email : \href{mailto:charlesisaacstern@gmail.com}{charlesisaacstern@gmail.com}\\
+  \href{https://cisaacstern.github.io/}{https://cisaacstern.github.io/} & Mobile : \href{tel:+19144505653}{+1-914-450-5653} \\
+\end{tabular*}
+
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+      
+% --------Multiple Positions Heading------------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+
+      \resumeSubheading
+        {Lamont-Doherty Earth Observatory}{Palisades, NY (Remote)}
+        {Data Infrastructure Engineer}{May 2021 - Present}
+      \resumeItemListStart
+        \resumeItem{Pangeo Forge}
+          {Lead software engineer for Pangeo Forge \href{https://pangeo-forge.org/}{(https://pangeo-forge.org/)},
+          an open-source, modular Python toolkit focused on distributed parallel ETL
+          pipelines for transforming gridded weather, ocean, and climate data (NetCDF, GRIB, etc.)
+          into analysis-ready Zarr stores.
+          }
+          \begin{itemize}
+            \item Lead development of the core Apache Beam-based SDK (\texttt{pangeo-forge-recipes}) and deployment tooling.
+            \item Develop and run ETL pipelines on GCP Dataflow to populate cloud storage with datasets for research initiatives.
+            \item Mentor collaborators in the project through design discussions, debugging sessions, and code reviews.
+            \item Communicate our work via publications, conference abstracts, blogs, documentation, and coordination meetings.
+          \end{itemize}
+        \resumeItem{Apache Beam SDK Development}
+          {Along with the core SDK, I develop configuration and deployment tooling.}
+          \begin{itemize}
+            \item \texttt{pangeo-forge-recipes}: Lead development of Apache Beam data transform library, including design/roadmapping, feature development, unit/integration testing, code review, documentation, packaging, and releases.
+            \item \texttt{pangeo-forge-runner} CLI: Apache Beam is flexible and powerful, but it's somewhat hard to deploy. This CLI, on which I am core developer, provides a unified interface for execution and storage configuration.
+            \item Github Action integration: Developed and released a custom GitHub Action that allows users to deploy ETL pipelines to both test and production environments as part of CI/CD workflows.
+            \item Upstream contributions: I currently lead development of the \texttt{DaskRunner} backend for Apache Beam, which encompasses multiple in-flight PRs on both Beam and Dask.
+            I also particate in community meetings related to Zarr V3 implementation in \texttt{zarr-python}, and have
+            prior PRs merged to \texttt{xarray}, Dask \texttt{distributed}, and \texttt{fsspec}.
+          \end{itemize}
+        \resumeItem{ETL Pipeline Development \& Deployment}
+          {In addition to developing tooling, I also employ that tooling to build large
+          datasets on cloud storage (GCS, S3) for research initiatives at Columbia University and for our collaborators.}
+          \begin{itemize}
+            \item Automated CMIP6 Ingestion Pipelines: Collabrated with Columbia's LEAP-STC initiative to
+            customize Pangeo Forge such that it is able to automatically generate pipelines for CMIP6 models,
+            resulting in automated builds of 1000s of datasets which pull NetCDF files from ESGF and output Zarr to GCS.
+            \item ClimSim: Co-author on this NeurIPS award-winning ML benchmark dataset
+            \href{https://arxiv.org/abs/2306.08754}{(https://arxiv.org/abs/2306.08754)}.
+            My contributions included designing and deploying a Pangeo Forge pipeline to extract 25 TB of high-res data
+            from Hugging Face, and build it into a 25 TB Zarr store on GCS in a single GCP Dataflow batch job.
+            \item SWOT Intercomparison: 
+            \item AQUA-MODIS: 
+            \item Miscelaneous: NOAA OISST, etc etc
+            \item Cataloging: stac, Postgres data model, 
+          \end{itemize}
+        \resumeItem{REST API Service Development}
+          {Developed a prototype}
+          \begin{itemize}
+            \item FastAPI
+            \item Infrastructure as Code (IaC)
+            \item GitHub Integration 
+            \item Heroku, Docker, GCP Cloud Functions, GCP Dataflow
+          \end{itemize}
+
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Career transition: self-directed study}{Santa Monica, CA}
+      {Project-based learning in geospatial data engineering}{Summer 2012 and 2013}
+      \resumeItemListStart
+        \resumeItem{Python fundamentals}
+          {Created models for portfolio hedging,  portfolio optimization and price forecasting. Also creating a strategy backtesting engine used for simulating and backtesting strategies.}
+        \resumeItem{UCSB/CREEL albedo research project}
+          {}
+        \resumeItem{Coursework}
+          {}
+      \resumeItemListEnd
+    \resumeSubheading
+      {FormaPath (formerly Parker Isaac Instruments)}{Ithaca, NY}
+      {Co-Founder and Chief Product Officer}{Jan 2015 - Aug 2020}
+      \resumeItemListStart
+        \resumeItem{Product-market fit}
+          {}
+        \resumeItem{Clinical evaluation, regulation}
+          {}
+        \resumeItem{Electromechanical medical device development}
+          {}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bowdoin College}{Brunswick, ME}
+    {Bachelor of Arts in Religion and East Asian Studies}{Sept. 2005 -- May 2009}
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\section{Programming Skills}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Languages}
+      {Python - Advanced(proficient?); JavaScript (React, NEXT) - Basic contribution proficiency; HTML/CSS; LaTeX}
+    \resumeSubItem{Testing/CI}
+      {Pytest, Github Actions}
+    \resumeSubItem{Deployment}
+      {Terraform, Docker, GCP Cloud Functions, GCP Cloud Run, GCP Dataflow}
+    \resumeSubItem{Storage}
+      {GCS, AWS S3}
+    \resumeSubItem{Documentation}
+      {Docstrings, Sphinx, MyST Markdown; e.g. \href{https://pangeo-forge.readthedocs.io/}{https://pangeo-forge.readthedocs.io/}}
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
